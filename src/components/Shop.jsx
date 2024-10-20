@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import Navbar from './Navbar'
 import Card from './Card'
 
 export default function Shop() {
   const [data, setData] = useState([])
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(true)
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -37,7 +37,7 @@ export default function Shop() {
       <h1>Shop Page</h1>
       <div className='item-container'>
         {data.map((d) => (
-          <Card json={d} key={d.id}/>
+          <Card item={d} key={d.id}/>
         ))}
       </div>
     </div>

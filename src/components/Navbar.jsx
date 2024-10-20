@@ -4,8 +4,17 @@ import { Link } from 'react-router-dom'
 export default function Navbar() {
   return (
     <nav>
-        <Link to='/shop'>To Shop</Link>
-        <Link to='/'>To Home</Link>
+        <ul>
+            <li>
+                <Link to='/'>To Home</Link> 
+            </li>
+            <li>
+                <Link to='/shop'>To Shop</Link>
+            </li>
+            <li>
+                <Link to='/cart'>To Cart</Link>
+            </li>
+        </ul>
     </nav>
   )
 }
