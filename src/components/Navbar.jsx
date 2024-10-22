@@ -10,20 +10,16 @@ export default function Navbar() {
     const { cartSize } = useCart()
     return (
         <nav className='navbar'>
-            <ul>
-                <li>
-                    <Link to='/' className={isHome ? 'active' : ''}>To Home</Link> 
-                </li>
-                <li>
-                    <Link to='/shop' className={isShop ? 'active' : ''}>To Shop</Link>
-                </li>
-                <li>
-                    <Link to='/cart' className={isCart ? 'active' : ''}>To Cart</Link>
-                </li>
-            </ul>
-            <div>
-                <p>Cart Size: {cartSize}</p>
-            </div>
+            
+            <Link to='/' className={isHome ? 'active' : 'inactive'}>Home</Link> 
+                
+            <Link to='/shop' className={isShop ? 'active' : 'inactive'}>Products</Link>
+               
+            <Link to='/cart' className={isCart ? 'active' : 'inactive'}>Cart</Link>
+            
+            
+            <p>Cart Size: {cartSize}</p>
+            
         </nav>
     )
 }

@@ -9,7 +9,7 @@ export default function Shop() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://fakestoreapi.com/products?limit=5')
+        const response = await fetch('https://fakestoreapi.com/products?limit=10')
         if (!response.ok) {
           throw new Error('Network response was not ok')
         } 
@@ -34,7 +34,7 @@ export default function Shop() {
 
   return (
     <div className='shop'>
-      <h1>Shop Page</h1>
+      <h1>Products</h1>
       <div className='card-container'>
         {data.map((d) => (
           <Card item={d} key={d.id}/>
