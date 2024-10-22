@@ -6,11 +6,11 @@ export default function Card(props) {
     const { addItemToCart } = useCart()
 
     return (
-        <div className='item'>
-            <img src={item.image} className='item-img'></img>
-            <p>{item.title}</p>
-            <p>{item.price}</p>
-            <button onClick={() => addItemToCart(item)}>Add Item To Cart!</button>
+        <div className='card'>
+            <img src={item.image} className='card-img'></img>
+            <p className='card-title'>{item.title}</p>
+            <p className='card-price'>{item.price}</p>
+            <button onClick={() => addItemToCart(item)} className='card-button'>Add Item To Cart!</button>
         </div>
     )
 }

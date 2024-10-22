@@ -5,7 +5,7 @@ export default function Shop() {
   const [data, setData] = useState([])
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(true)
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -33,9 +33,9 @@ export default function Shop() {
   }
 
   return (
-    <div>
+    <div className='shop'>
       <h1>Shop Page</h1>
-      <div className='item-container'>
+      <div className='card-container'>
         {data.map((d) => (
           <Card item={d} key={d.id}/>
         ))}

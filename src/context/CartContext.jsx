@@ -10,7 +10,15 @@ export function CartProvider({children}) {
     const [cartItems, setCartItems] = useState([])
 
     const addItemToCart = (item) => {
-        setCartItems((prev) => [...prev, item])
+        setCartItems((prev) => {
+            const existingItem = prev.find((cartItem) => cartItem.id === item.id)
+
+            if (existingItem) {
+                return prev.map((cartItem) => cartItem.id === item.id ? {...cartItem, count: cartItem.count + 1} : cartItem)
+            } else {
+                return [...prev, {...item, count: 1}]
+            }
+        })
         alert(`${item.title} Added To Cart`)
     }
 
@@ -18,8 +26,11 @@ export function CartProvider({children}) {
         setCartItems((prev) => prev.filter((item) => item.id !== itemId))
     }
 
+    let cartSize = 0
+    cartItems.forEach((cartItem) => cartSize += cartItem.count)
+
     return (
-        <CartContext.Provider value = {{ cartItems, addItemToCart, removeItemFromCart }}>
+        <CartContext.Provider value = {{ cartItems, cartSize, addItemToCart, removeItemFromCart }}>
             {children}
         </CartContext.Provider>
     )

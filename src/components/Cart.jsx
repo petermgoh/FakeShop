@@ -1,13 +1,15 @@
 import { useCart } from "../context/CartContext"
+import CartCard from "./CartCard"
 
 export default function Cart() {
-    const {cartItems, removeItemFromCart} = useCart()
+    const {cartItems} = useCart()
+
     return (
-        <div>
+        <div className='cart'>
             <h1>Cart</h1>
             <ul>
                 {cartItems.map((item) => 
-                <h3 key={item.id}>{item.title}</h3>
+                <CartCard key={item.id} item={item}/>
                 )}
             </ul>
         </div>

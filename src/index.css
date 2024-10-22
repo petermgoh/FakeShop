@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #4a284b;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -67,16 +67,71 @@ button:focus-visible {
   }
 }
 
-.item-container {
+.card-container {
   display: flex;
   gap: 15px;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap; /* Prevent wrapping of items */
+  scroll-behavior: smooth; /* Optional: Smooth scrolling effect */
+
 }
 
-.item {
-  background-color: grey;
+.card {
+  background-color: white;
   height:fit-content;
+  flex: none;
+  width: 200px;
+  color: black;
+  border-radius: 5px;
 }
 
-.item-img {
+.card-img {
   width: 200px;
+  height: 200px;
+  border-radius: 5px;
+}
+
+.active {
+  font-weight: bold;
+  color: purple
+}
+
+.active:hover {
+  color: purple;
+  cursor:default;
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
+  justify-content: flex-start;
+  height: 100vh;
+}
+
+.card-title {
+  text-wrap:balance;
+}
+
+.card-button {
+  margin: 5px;
+}
+
+.cart-card {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  width: 25rem;
+  justify-content: space-between;
+}
+
+hr {
+  flex: auto;
+  align-self: center;
+  color: grey;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background-color: grey;
+  border: none;
+  height: 1px;
 }
