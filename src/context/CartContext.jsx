@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useMemo, useState } from "react";
 
 const CartContext = createContext()
 
@@ -19,18 +19,44 @@ export function CartProvider({children}) {
                 return [...prev, {...item, count: 1}]
             }
         })
-        alert(`${item.title} Added To Cart`)
     }
 
     const removeItemFromCart = (itemId) => {
         setCartItems((prev) => prev.filter((item) => item.id !== itemId))
     }
 
-    let cartSize = 0
-    cartItems.forEach((cartItem) => cartSize += cartItem.count)
+    const checkout = () => {
+        if (cartSize === 0) {
+            alert('Cart is Empty')
+            return
+        }
+        setCartItems([])
+        alert(`Thanks for $${totalPrice}, sucker!`)
+    }
+
+    // Memoized cart size
+    const cartSize = useMemo(() => 
+        cartItems.reduce((total, item) => total + item.count, 0),
+        [cartItems]
+    );
+
+    // Memoized total price
+    const totalPrice = useMemo(() =>
+        cartItems.reduce((total, item) => total + item.price * item.count, 0).toFixed(2),
+        [cartItems]
+    );
+
+    const value = {
+        cartItems,
+        cartSize,
+        totalPrice,
+        addItemToCart,
+        removeItemFromCart,
+        checkout,
+    };
 
     return (
-        <CartContext.Provider value = {{ cartItems, cartSize, addItemToCart, removeItemFromCart }}>
+        <CartContext.Provider value = {value}>
             {children}
         </CartContext.Provider>
     )
