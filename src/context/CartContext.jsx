@@ -21,10 +21,12 @@ export function CartProvider({children}) {
         })
     }
 
+    // removes item matching itemId from cart
     const removeItemFromCart = (itemId) => {
         setCartItems((prev) => prev.filter((item) => item.id !== itemId))
     }
 
+    // checkout function clears cart and alerts
     const checkout = () => {
         if (cartSize === 0) {
             alert('Cart is Empty')
